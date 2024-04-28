@@ -1,0 +1,87 @@
+ <!doctype html>
+<html lang="en" style="background-color:lightgrey;">
+  <head>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Molecule Manipulation - Add an Element</title>
+    <link rel="shortcut icon" href="#">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"> </script>
+    <script src="https://unpkg.com/svgwrite"></script>
+    <script src="display.js"></script>
+  </head>
+
+  <body>
+
+    <header>
+        <img src ="mol_icon.png" alt="All black icon of a molecule." width="75" height="75">
+    </header>
+
+    <center>
+      <main>
+        <h1>Molecule Manipulation - Display a Molecule</h1>
+        <p>View molecule information from the database and select ones for viewing as an SVG.</p>
+        <p>&nbsp</p>
+
+		<div id = "table">
+		</div>
+
+		<p>&nbsp</p>
+    <h2>View and Rotate SVG Molecule</h2>
+    <input type="number" id="angle" min="0" max="360" placeholder="Enter Angle" />
+    <input type="submit" onclick="rotateSVG()" value = "Rotate">
+    <p><a href="index.html">Back to Homepage</a></p>
+    <p>&nbsp</p>
+    <p>&nbsp</p>
+    <p>&nbsp</p>
+    <p>&nbsp</p>
+    <p>&nbsp</p>
+    <p>&nbsp</p>
+    <p>&nbsp</p>
+    <p>&nbsp</p>
+    <p>&nbsp</p>
+    <p>&nbsp</p>
+    <p>&nbsp</p>
+		<div id = "svg">
+    </div>
+
+      </main>
+
+    <footer>
+	  <p>&nbsp</p>
+	  <p>&nbsp</p>
+    <p>&nbsp</p>
+      <p>This was created by Olivia Biancucci (1136788).</p>
+    </footer>
+
+    </body>
+    </center>
+
+</html>
+
+<script>
+  function sendPostRequest(id) {
+    var molName = id; //get the name of the molecule selected by using the id of its button
+    const formData = $("#form")[0];
+    const form = new FormData(formData);
+    form.append("molname", molName); //add the name of the molecule to the form data
+
+    $.ajax({
+      type: 'POST',
+      url: '/display.html',
+      data: form,
+      processData: false,
+      contentType: false,
+      beforeSend: function(xhr){ //add the name of the molecule to the header
+        xhr.setRequestHeader("molname", molName);
+    },
+      success: function(response) { 
+        $("#svg").html(response);
+      },
+    });
+  }
+
+  function rotateSVG() {
+    var angle = document.getElementById("angle").value;
+    var svgImage = document.getElementById("svg");
+    svgImage.style.transform = "rotate(" + angle + "deg)";
+  }
+  </script>

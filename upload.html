@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" style="background-color:lightgrey;">
+  <head>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Molecule Manipulation - Upload SDF File</title>
+    <link rel="shortcut icon" href="#">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"> </script>
+    <script src="upload.js"></script>
+  </head>
+
+  <body>
+
+    <header>
+        <img src ="mol_icon.png" alt="All black icon of a molecule." width="75" height="75">
+    </header>
+
+    <center>
+      <main>
+        <h1>Molecule Manipulation - Upload SDF File</h1>
+        <p>Upload sdf files and convert them to svg images that can be manipulated.</p>
+        <p>&nbsp</p>
+
+    <form id="form">
+			<label for="file">SDF File:</label>
+			<input type="file" id="file" name="file" required><br><br>
+			<label for="mol">Molecule Name:</label>
+			<input type="text" id="molname" name="molname" required><br><br>
+			<input type="submit" value="Upload File">
+		</form>
+    <p id="success">SDF file uploaded to the database!</p>
+	</main>
+
+  <footer>
+  <p>&nbsp</p>
+  <p>&nbsp</p>
+  <p><a href="index.html">Back to Homepage</a></p>
+  <p>&nbsp</p>
+    <p>This was created by Olivia Biancucci (1136788).</p>
+  </footer>
+
+    </body>
+    </center>
+
+</html>
